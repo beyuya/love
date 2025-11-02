@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<!-- Background Video (auto sound trick) -->
+<!-- Background Video (auto sound trick fallback mute trick) -->
 <video id="bgVideo" autoplay muted loop playsinline style="display:none;">
   <source src="Bersamamu.mp4" type="video/mp4">
 </video>
@@ -18,7 +18,12 @@
   <h1>Bayu ❤️ Mei</h1>
   <p>Since 05 November 2023</p>
   <p>Our Story Begins ✨</p>
+
+  <button id="startBtn" class="start-btn">Mulai Cerita Kita 💞</button>
 </div>
+
+<!-- AUDIO -->
+<audio id="bgMusic" src="Bersamamu.mp3"></audio>
 
 <!-- Timeline -->
 <section class="timeline">
@@ -103,4 +108,3 @@
 <script src="script.js"></script>
 </body>
 </html>
-
