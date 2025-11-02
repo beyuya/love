@@ -1,64 +1,101 @@
 body {
   margin: 0;
   font-family: "Arial", sans-serif;
-  background: #fff7fb;
+  background: linear-gradient(to bottom, #fff7fb, #ffe9f3);
   overflow-y: hidden;
   text-align: center;
 }
 
-/* intro screen */
-#intro {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  transition: .8s ease;
-  background: #fff1f8;
+/* bokeh overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: url('bokeh.png');
+  opacity: .18;
+  pointer-events:none;
+  filter: blur(2px);
 }
 
+/* intro */
+#intro {
+  height: 100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap: 8px;
+  transition:.8s ease;
+  background:#fff1f8;
+}
+
+/* button */
 .start-btn {
   padding: 12px 25px;
-  background: #ff9bb7;
+  background:#ff9bb7;
   border: none;
-  border-radius: 30px;
-  color: #fff;
-  font-size: 1.1em;
-  cursor: pointer;
-  margin-top: 20px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  transition: .3s;
+  border-radius:30px;
+  color:#fff;
+  font-size:1.1em;
+  cursor:pointer;
+  margin-top:20px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.15);
+  transition:.3s;
 }
 .start-btn:hover {
   transform: scale(1.04);
-  background: #ff87a7;
+  background:#ff87a7;
 }
 
 /* timeline */
 .timeline {
-  padding: 20px;
+  padding:22px;
 }
 .photo-card {
-  margin-bottom: 40px;
+  margin-bottom:40px;
+  opacity:0;
+  transform: translateY(25px);
+  transition:1s ease;
+}
+.photo-card.show {
+  opacity:1;
+  transform: translateY(0);
 }
 .photo-card img {
-  width: 90%;
-  max-width: 320px;
-  border-radius: 14px;
-  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+  width:90%;
+  max-width:320px;
+  border-radius:14px;
+  box-shadow:0 6px 14px rgba(0,0,0,0.15);
 }
 .caption {
-  font-size: 1em;
-  margin-top: 10px;
+  background: rgba(255,240,250,.9);
+  padding:8px 12px;
+  border-radius:10px;
+  display:inline-block;
+  margin-top:8px;
+  font-size:1em;
 }
 
 /* closing */
 .closing {
-  padding: 40px 20px;
-  font-size: 1rem;
-  line-height: 1.6;
-  max-width: 550px;
-  margin: auto;
-  opacity: .85;
+  padding:40px 20px;
+  font-size:1rem;
+  line-height:1.6;
+  max-width:550px;
+  margin:auto;
+  opacity:.9;
+}
+
+/* floating hearts */
+.heart {
+  position:fixed;
+  bottom:-10px;
+  font-size:14px;
+  animation: floatUp 4s linear forwards;
+  opacity:.6;
+}
+@keyframes floatUp {
+  0% {transform:translateY(0) scale(1); opacity:.6;}
+  100%{transform:translateY(-120vh) scale(.6); opacity:0;}
 }
