@@ -1,32 +1,15 @@
-// Hilangin intro 4 detik
-setTimeout(() => {
-  document.getElementById("intro").style.display = "none";
-}, 4000);
+const startBtn = document.getElementById("startBtn");
+const intro = document.getElementById("intro");
+const music = document.getElementById("bgMusic");
 
+startBtn.addEventListener("click", () => {
+  intro.style.opacity = "0";
+  intro.style.pointerEvents = "none";
+  document.body.style.overflowY = "scroll";
 
-// FORCE autoplay audio via hidden video
-document.addEventListener("DOMContentLoaded", () => {
-  const v = document.getElementById("bgVideo");
+  setTimeout(() => {
+    intro.style.display = "none";
+  }, 800);
 
-  v.volume = 1;
-  v.muted = false;
-
-  function forcePlay(){
-    v.muted = false;
-    v.volume = 1;
-    v.play().then(() => {
-      console.log("✅ Autoplay success");
-    }).catch(() => {
-      console.log("❌ Still blocked... retrying");
-    });
-  }
-
-  // Brute force try
-  forcePlay();
-  let interval = setInterval(forcePlay, 1200);
-
-  // stop brute force kalau berhasil
-  v.addEventListener("playing", () => {
-    clearInterval(interval);
-  });
+  music.play();
 });
